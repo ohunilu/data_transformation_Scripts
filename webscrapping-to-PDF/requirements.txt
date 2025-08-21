@@ -1,0 +1,30 @@
+# ===============================
+# Website Crawler → PDF Brochure
+# Requirements
+# ===============================
+# Python Packages
+scrapy==2.13.3            # Crawling framework
+beautifulsoup4==4.12.3    # HTML parsing
+lxml==5.2.1               # Fast HTML/XML parser
+cssselect==1.2.0          # CSS selector support for lxml
+requests==2.32.3          # HTTP requests (asset downloading)
+weasyprint==66.0          # PDF generation with CSS & images
+reportlab==4.2.2          # Low-level PDF manipulation
+python-dateutil==2.9.0.post0  # Date/time utilities for logging
+
+# ===============================
+# System Dependencies (must install manually before pip install)
+# ===============================
+# Ubuntu / Debian:
+#   sudo apt update
+#   sudo apt install -y libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libffi-dev libssl-dev
+#
+# Fedora:
+#   sudo dnf install cairo pango gdk-pixbuf2 libffi openssl
+#
+# MacOS (Homebrew):
+#   brew install cairo pango gdk-pixbuf libffi
+#
+# Windows:
+#   WeasyPrint bundles most dependencies, but you may need GTK and Cairo:
+#   https://weasyprint.readthedocs.io/en/stable/install.html#windows
