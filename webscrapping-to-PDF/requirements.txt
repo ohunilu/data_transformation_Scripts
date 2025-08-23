@@ -4,13 +4,9 @@
 # ===============================
 # Python Packages
 scrapy==2.13.3            # Crawling framework
-beautifulsoup4==4.12.3    # HTML parsing
-lxml==5.2.1               # Fast HTML/XML parser
-cssselect==1.2.0          # CSS selector support for lxml
-requests==2.32.3          # HTTP requests (asset downloading)
-weasyprint==66.0          # PDF generation with CSS & images
-reportlab==4.2.2          # Low-level PDF manipulation
-python-dateutil==2.9.0.post0  # Date/time utilities for logging
+requests==2.32.3          # HTTP requests (site type detection)
+weasyprint==66.0          # PDF generation for static sites
+playwright==1.54.0        # Playwright for dynamic site PDF generation
 
 # ===============================
 # System Dependencies (must install manually before pip install)
