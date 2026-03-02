@@ -1,9 +1,7 @@
 import scrapy
-import pandas as pd
 
-
-class TableSpider(scrapy.Spider):
-    name = "table_spider"
+class CrawlSpider(scrapy.Spider):
+    name = "crawl_spider"
 
     def __init__(self, start_url=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -11,18 +9,20 @@ class TableSpider(scrapy.Spider):
         self.records = []
 
     def parse(self, response):
-        tables = response.css("table")
+        for book in response.css("article.product_pod"):
+            title = book.css("h3 a::attr(title)").get()
+            price = book.css("p.price_color::text").get()
+            rating_class = book.css("p.star-rating::attr(class)").get()
+            
+            rating = rating_class.replace("star-rating", "").strip() if rating_class else None
 
-        for table in tables:
-            headers = table.css("th::text").getall()
-            rows = table.css("tr")
-
-            for row in rows[1:]:
-                values = row.css("td::text").getall()
-                if len(values) == len(headers):
-                    record = dict(zip(headers, values))
-                    self.records.append(record)
-
-    def closed(self, reason):
-        df = pd.DataFrame(self.records)
-        df.to_json("scraped_data.json", orient="records", indent=2)
+            yield {
+            "title": title,
+            "price": price,
+            "rating": rating
+            }
+        
+        # paginate
+        next_page = response.css('li.next > a::attr(href)').get()
+        if next_page:
+            yield response.follow(next_page, self.parse)

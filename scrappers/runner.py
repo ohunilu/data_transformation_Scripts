@@ -1,12 +1,19 @@
-import pandas as pd
-from utils.data_utils import (
-    write_csv_file,
-    write_avro_file,
-    write_parquet_file,
-)
+from scrapy.crawler import CrawlerProcess
+from .spider import CrawlSpider
 
-df = pd.read_json("scraped_data.json")
 
-write_csv_file(df, "output.csv")
-write_avro_file(df, "output.avro")
-write_parquet_file(df, "output.parquet")
+
+def run_spider(start_url: str):
+    process = CrawlerProcess({
+        "LOG_LEVEL": "INFO",
+        "USER_AGENT": "DataExtractBot/1.0",
+        "ITEM_PIPELINES": {
+        "scrappers.extractpipe.ExportPipe": 300,
+    },
+    })
+    process.crawl(CrawlSpider, start_url=start_url)
+    process.start()
+
+
+if __name__ == "__main__":
+    run_spider("https://books.toscrape.com/")

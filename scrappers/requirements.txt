@@ -1,26 +1,5 @@
-# ===============================
-# Website Crawler → PDF Brochure
-# Requirements
-# ===============================
-# Python Packages
-scrapy==2.13.3            # Crawling framework
-requests==2.32.3          # HTTP requests (site type detection)
-weasyprint==66.0          # PDF generation for static sites
-playwright==1.54.0        # Playwright for dynamic site PDF generation
+scrapy
+pandas                
+fastavro
+pyarrow
 
-# ===============================
-# System Dependencies (must install manually before pip install)
-# ===============================
-# Ubuntu / Debian:
-#   sudo apt update
-#   sudo apt install -y libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libffi-dev libssl-dev
-#
-# Fedora:
-#   sudo dnf install cairo pango gdk-pixbuf2 libffi openssl
-#
-# MacOS (Homebrew):
-#   brew install cairo pango gdk-pixbuf libffi
-#
-# Windows:
-#   WeasyPrint bundles most dependencies, but you may need GTK and Cairo:
-#   https://weasyprint.readthedocs.io/en/stable/install.html#windows
