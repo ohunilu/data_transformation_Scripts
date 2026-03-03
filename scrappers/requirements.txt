@@ -2,4 +2,4 @@ scrapy
 pandas                
 fastavro
 pyarrow
-
+halo
