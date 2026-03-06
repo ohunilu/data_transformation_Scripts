@@ -85,6 +85,3 @@ Scripting isn't about being lazy; it's about being smart. It's about freeing up 
 
 I hope these scripts serve you well. Happy building, and even happier automating!
 
----
-
-**⭐ If this repository helped or inspired you, please give it a star! It motivates me to keep adding more content.**
